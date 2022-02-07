@@ -31,13 +31,8 @@ function NewPlantForm({ onNewPlantSubmit }) {
     })
       .then(r => r.json())
       .then(addedPlant => onNewPlantSubmit(addedPlant))
-      
-    
     
   }
-
-
-
 
   return (
     <div className="new-plant-form">

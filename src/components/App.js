@@ -3,14 +3,11 @@ import Header from "./Header";
 import PlantPage from "./PlantPage";
 
 function App() {
-  
-  const [plantsToDisplay, setPlantsToDisplay] = useState([])
   const [plants, setPlants] = useState([])
+  const [plantsToDisplay, setPlantsToDisplay] = useState([...plants])
+  
 
-  const addNewPlant = (addedPlant) => {
-    const newPlantsList = [...plants, addedPlant]
-    setPlants(newPlantsList)
-  }
+
   
 
   useEffect(() => {
@@ -22,7 +19,12 @@ function App() {
       })
   }, [])
 
-
+  const addNewPlant = (addedPlant) => {
+    console.log(addedPlant)
+    const newPlantsList = [...plants, addedPlant]
+    console.log(newPlantsList)
+    setPlants(() => newPlantsList)
+  }
 
   return (
     <div className="app">
