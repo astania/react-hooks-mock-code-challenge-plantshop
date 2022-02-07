@@ -5,22 +5,29 @@ import PlantPage from "./PlantPage";
 function App() {
   
   const [plantsToDisplay, setPlantsToDisplay] = useState([])
-  const plants = [...plantsToDisplay]
+  const [plants, setPlants] = useState([])
+
+  const addNewPlant = (addedPlant) => {
+    const newPlantsList = [...plants, addedPlant]
+    setPlants(newPlantsList)
+  }
   
 
   useEffect(() => {
     fetch("http://localhost:6001/plants")
       .then(r => r.json())
-      .then(allPlants => setPlantsToDisplay(allPlants))
+      .then(allPlants => {
+        setPlantsToDisplay(allPlants)
+        setPlants(allPlants)
+      })
   }, [])
 
-  console.log(plants)
 
 
   return (
     <div className="app">
       <Header />
-      <PlantPage plants={plants} plantsToDisplay={plantsToDisplay} setPlantsToDisplay={setPlantsToDisplay}/>
+      <PlantPage plants={plants} plantsToDisplay={plantsToDisplay} setPlantsToDisplay={setPlantsToDisplay} onNewPlantSubmit={addNewPlant}/>
     </div>
   );
 }
