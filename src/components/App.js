@@ -5,10 +5,7 @@ import PlantPage from "./PlantPage";
 function App() {
   const [plants, setPlants] = useState([])
   const [plantsToDisplay, setPlantsToDisplay] = useState([])
-  
 
-
-  
 
   useEffect(() => {
     fetch("http://localhost:6001/plants")
@@ -21,7 +18,7 @@ function App() {
 
   const updatePlantPrice = (updatedPlant) => {
     const updatedPlants = plants.map(plant => {
-      if (plant.id === updatedPlant.id){
+      if (plant.id === updatedPlant.id) {
         return updatedPlant
       } else {
         return plant
@@ -50,7 +47,7 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <PlantPage plants={plants} plantsToDisplay={plantsToDisplay} setPlantsToDisplay={setPlantsToDisplay} onNewPlantSubmit={addNewPlant} onUpdatePlantPrice={updatePlantPrice} onDeletePlant={removePlant}/>
+      <PlantPage plants={plants} plantsToDisplay={plantsToDisplay} setPlantsToDisplay={setPlantsToDisplay} onNewPlantSubmit={addNewPlant} onUpdatePlantPrice={updatePlantPrice} onDeletePlant={removePlant} />
     </div>
   );
 }

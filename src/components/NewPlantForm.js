@@ -31,7 +31,7 @@ function NewPlantForm({ onNewPlantSubmit }) {
     })
       .then(r => r.json())
       .then(addedPlant => onNewPlantSubmit(addedPlant))
-    
+
   }
 
   return (

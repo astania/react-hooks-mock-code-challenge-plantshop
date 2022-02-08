@@ -37,9 +37,9 @@ function PlantCard({ plant, onUpdatePlantPrice, onDeletePlant }) {
   const deletePlant = () => {
     fetch(`http://localhost:6001/plants/${plant.id}`, {
       method: "DELETE",
-  })
-    .then(r => r.json())
-    .then(() => onDeletePlant(plant))
+    })
+      .then(r => r.json())
+      .then(() => onDeletePlant(plant))
   }
 
 
