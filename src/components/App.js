@@ -19,6 +19,18 @@ function App() {
       })
   }, [])
 
+  const updatePlantPrice = (updatedPlant) => {
+    const updatedPlants = plants.map(plant => {
+      if (plant.id === updatedPlant.id){
+        return updatedPlant
+      } else {
+        return plant
+      }
+    })
+    setPlants(updatedPlants)
+    setPlantsToDisplay(updatedPlants)
+  }
+
   const addNewPlant = (addedPlant) => {
     console.log(addedPlant)
     const newPlantsList = [...plants, addedPlant]
@@ -30,7 +42,7 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <PlantPage plants={plants} plantsToDisplay={plantsToDisplay} setPlantsToDisplay={setPlantsToDisplay} onNewPlantSubmit={addNewPlant}/>
+      <PlantPage plants={plants} plantsToDisplay={plantsToDisplay} setPlantsToDisplay={setPlantsToDisplay} onNewPlantSubmit={addNewPlant} onUpdatePlantPrice={updatePlantPrice}/>
     </div>
   );
 }
