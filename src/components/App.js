@@ -4,7 +4,7 @@ import PlantPage from "./PlantPage";
 
 function App() {
   const [plants, setPlants] = useState([])
-  const [plantsToDisplay, setPlantsToDisplay] = useState([...plants])
+  const [plantsToDisplay, setPlantsToDisplay] = useState([])
   
 
 
@@ -24,6 +24,7 @@ function App() {
     const newPlantsList = [...plants, addedPlant]
     console.log(newPlantsList)
     setPlants(() => newPlantsList)
+    setPlantsToDisplay(() => newPlantsList)
   }
 
   return (
