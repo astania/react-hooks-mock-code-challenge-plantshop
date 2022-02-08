@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function PlantCard({ plant, onUpdatePlantPrice }) {
+function PlantCard({ plant, onUpdatePlantPrice, onDeletePlant }) {
   const [inStock, setInStock] = useState(true)
   const [isClicked, setIsClicked] = useState(false)
   const [newPrice, setNewPrice] = useState(plant.price)
@@ -29,9 +29,17 @@ function PlantCard({ plant, onUpdatePlantPrice }) {
       .then(updatedPlant => {
         onUpdatePlantPrice(updatedPlant)
         toggleIsClicked()
-        
+
       })
 
+  }
+
+  const deletePlant = () => {
+    fetch(`http://localhost:6001/plants/${plant.id}`, {
+      method: "DELETE",
+  })
+    .then(r => r.json())
+    .then(() => onDeletePlant(plant))
   }
 
 
@@ -51,6 +59,7 @@ function PlantCard({ plant, onUpdatePlantPrice }) {
           <input type="text" name="newPrice" placeholder="Enter new price" value={newPrice} onChange={(event) => setNewPrice(event.target.value)} />
         </form>
       ) : null}
+      <button onClick={deletePlant}>delete</button>
     </li>
   );
 }

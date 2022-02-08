@@ -31,6 +31,14 @@ function App() {
     setPlantsToDisplay(updatedPlants)
   }
 
+  const removePlant = (removedPlant) => {
+    const updatedPlants = plants.filter(plant => plant.id !== removedPlant.id)
+    console.log(removedPlant)
+    console.log(updatedPlants)
+    setPlants(updatedPlants)
+    setPlantsToDisplay(updatedPlants)
+  }
+
   const addNewPlant = (addedPlant) => {
     console.log(addedPlant)
     const newPlantsList = [...plants, addedPlant]
@@ -42,7 +50,7 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <PlantPage plants={plants} plantsToDisplay={plantsToDisplay} setPlantsToDisplay={setPlantsToDisplay} onNewPlantSubmit={addNewPlant} onUpdatePlantPrice={updatePlantPrice}/>
+      <PlantPage plants={plants} plantsToDisplay={plantsToDisplay} setPlantsToDisplay={setPlantsToDisplay} onNewPlantSubmit={addNewPlant} onUpdatePlantPrice={updatePlantPrice} onDeletePlant={removePlant}/>
     </div>
   );
 }
